@@ -7,6 +7,7 @@
 
   <script src="https://cdn.jsdelivr.net/gh/hiukim/mind-ar-js@1.1.4/dist/mindar-image.prod.js"></script>
   <script src="https://aframe.io/releases/1.2.0/aframe.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/gh/donmccurdy/aframe-extras@v6.1.1/dist/aframe-extras.min.js"></script>
   <script src="https://cdn.jsdelivr.net/gh/hiukim/mind-ar-js@1.1.4/dist/mindar-image-aframe.prod.js"></script>
 
   <style>
@@ -21,13 +22,20 @@
     vr-mode-ui="enabled: false"
     device-orientation-permission-ui="enabled: false">
 
+    <a-assets>
+      <a-asset-item id="sherriModel" src="./Sherri.glb"></a-asset-item>
+    </a-assets>
+
     <a-camera position="0 0 0" look-controls="enabled: false"></a-camera>
 
+    <a-entity light="type: ambient; intensity: 1"></a-entity>
+    <a-entity light="type: directional; intensity: 0.8" position="0 1 1"></a-entity>
+
     <a-entity mindar-image-target="targetIndex: 0">
-      <!-- Placeholder Sherri -->
-      <a-box position="0 0 0.25" scale="0.5 0.5 0.5" color="#E8A33D"
-             animation="property: rotation; to: 0 360 0; loop: true; dur: 4000; easing: linear"></a-box>
-      <a-text value="Hi, I'm Sherri!" position="0 0.6 0" align="center" color="#FFFFFF" width="2"></a-text>
+      <a-gltf-model id="sherri" src="#sherriModel"
+                    position="0 0 0.1" rotation="0 0 0" scale="0.3 0.3 0.3"
+                    animation-mixer></a-gltf-model>
+      <a-text value="Hi, I'm Sherri!" position="0 0.7 0" align="center" color="#FFFFFF" width="2"></a-text>
     </a-entity>
   </a-scene>
 </body>
